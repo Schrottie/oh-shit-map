@@ -21,7 +21,7 @@
 			<img src="klo.png" width="32" height="32" style="margin-right: 10px; margin-left: 10px;" />
 			Oh-Shit-Map
 			<img src="klo.png" width="32" height="32" style="margin-right: 10px; margin-left: 10px;" />
-			<br /><span class="sub">proudly presented by: Schrotties Laufblog "<a href="https://running.maik-bischoff.de/" target="foo">100 Meilen</a>"</span>
+			<br /><span class="sub">proudly presented by: Schrotties Laufblog  &raquo;<a href="https://running.maik-bischoff.de/" target="foo">100 Meilen</a> &laquo;</span>
 		</div>
     </div>
     <script src="js/leaflet.js"></script>

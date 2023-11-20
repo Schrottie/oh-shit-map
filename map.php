@@ -39,7 +39,7 @@
     <!-- Leaflet Styles -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <!-- Eigene Styles -->
-    <link rel="css/map.css" />
+    <link rel="stylesheet" href="css/map.css" />
     <!-- Google Fonts Lexend Deca -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@400&display=swap">
 

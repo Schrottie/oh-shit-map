@@ -55,17 +55,7 @@
 		</div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"></script>
-    <script src="js/map.js"></script>
     <script src="js/overpass.js"></script>
-
-    <script>
-        var toilettenLayer = L.layerGroup().addTo(map);
-
-        // Lade Toilettenlayer beim Initialisieren
-        loadToilettenLayer();
-
-        // Führe die Overpass API-Abfrage bei Kartenbewegung aus
-        map.on('moveend', loadToilettenLayer);
-    </script>
+    <script src="js/map.js"></script>
 </body>
 </html>

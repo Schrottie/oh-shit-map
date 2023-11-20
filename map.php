@@ -25,67 +25,17 @@
 		</div>
     </div>
     <script src="js/leaflet.js"></script>
+    <script src="js/map.js"></script>
+    <script src="js/overpass.js"></script>
 
     <script>
-        var map = L.map('map').setView([52.5200, 13.4050], 13);
-
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '© OpenStreetMap contributors'
-        }).addTo(map);
-
-        // Benutzerdefiniertes Toiletten-Icon
-        const toiletIcon = L.icon({
-            iconUrl: 'klo.png',
-            iconSize: [32, 32],
-            iconAnchor: [16, 32],
-            popupAnchor: [0, -32],
-        });
-
         var toilettenLayer = L.layerGroup().addTo(map);
-
-        // Führe die Overpass API-Abfrage beim Laden der Seite und bei Kartenbewegung aus
-        function loadToilettenLayer() {
-            var bounds = map.getBounds();
-            var overpassQuery = buildOverpassQuery(bounds);
-
-            fetch('https://overpass-api.de/api/interpreter', {
-                method: 'POST',
-                body: overpassQuery
-            })
-            .then(response => response.json())
-            .then(data => {
-                // Überprüfe, ob Daten vorhanden sind
-                if (data.elements) {
-                    toilettenLayer.clearLayers();
-
-                    // Toilettenmarker manuell erstellen
-                    data.elements.forEach(toilet => {
-                        const latlng = [toilet.lat, toilet.lon];
-                        L.marker(latlng, { icon: toiletIcon })
-                            .bindPopup(`${toilet.tags.name || 'Öffentliche Toilette'}`)
-                            .addTo(toilettenLayer);
-                    });
-                }
-            });
-        }
 
         // Lade Toilettenlayer beim Initialisieren
         loadToilettenLayer();
 
         // Führe die Overpass API-Abfrage bei Kartenbewegung aus
         map.on('moveend', loadToilettenLayer);
-
-        function buildOverpassQuery(bounds) {
-            // Baue die Overpass API-Abfrage mit den aktuellen Kartengrenzen
-            var query = '[out:json];' +
-                'node["amenity"="toilets"](' +
-                bounds.getSouthWest().lat + ',' + bounds.getSouthWest().lng + ',' +
-                bounds.getNorthEast().lat + ',' + bounds.getNorthEast().lng +
-                ');' +
-                'out;';
-
-            return query;
-        }
     </script>
 </body>
 </html>

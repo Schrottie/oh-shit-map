@@ -56,6 +56,7 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"></script>
     <script src="js/overpass.js"></script>
+    <script src="js/geolocation.js"></script>
     <script src="js/map.js"></script>
 </body>
 </html>

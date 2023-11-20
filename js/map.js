@@ -3,7 +3,7 @@
 var map = L.map('map').setView([52.5200, 13.4050], 13);
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: 'Â© OpenStreetMap contributors'
+    attribution: '© OpenStreetMap contributors'
 }).addTo(map);
 
 var toilettenLayer = L.layerGroup().addTo(map);

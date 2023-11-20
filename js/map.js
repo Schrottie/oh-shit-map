@@ -15,3 +15,6 @@ loadToilettenLayer(map, toilettenLayer);
 map.on('moveend', function () {
     loadToilettenLayer(map, toilettenLayer);
 });
+
+// Füge die Standort-Ermittlungsfunktion hinzu
+zentriereAufStandort(map);

@@ -1,6 +1,3 @@
-// overpass.js
-
-// Benutzerdefiniertes Toiletten-Icon
 const toiletIcon = L.icon({
     iconUrl: 'img/klo.png',
     iconSize: [32, 32],
@@ -18,11 +15,9 @@ function loadToilettenLayer(map, toilettenLayer) {
     })
     .then(response => response.json())
     .then(data => {
-        // Überprüfe, ob Daten vorhanden sind
         if (data.elements) {
             toilettenLayer.clearLayers();
 
-            // Toilettenmarker manuell erstellen
             data.elements.forEach(toilet => {
                 const latlng = [toilet.lat, toilet.lon];
                 L.marker(latlng, { icon: toiletIcon })
@@ -34,7 +29,6 @@ function loadToilettenLayer(map, toilettenLayer) {
 }
 
 function buildOverpassQuery(bounds) {
-    // Baue die Overpass API-Abfrage mit den aktuellen Kartengrenzen
     var query = '[out:json];' +
         'node["amenity"="toilets"](' +
         bounds.getSouthWest().lat + ',' + bounds.getSouthWest().lng + ',' +

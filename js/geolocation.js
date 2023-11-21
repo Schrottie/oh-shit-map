@@ -1,5 +1,3 @@
-// geolocation.js
-
 function zentriereAufStandort(map) {
     if ('geolocation' in navigator) {
         navigator.geolocation.getCurrentPosition(

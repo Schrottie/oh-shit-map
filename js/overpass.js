@@ -20,21 +20,62 @@ function loadToilettenLayer(map, toilettenLayer) {
 
             data.elements.forEach(toilet => {
                 const latlng = [toilet.lat, toilet.lon];
-                L.marker(latlng, { icon: toiletIcon })
-                    .bindPopup(`${toilet.tags.name || 'Öffentliche Toilette'}`)
-                    .addTo(toilettenLayer);
+                
+                const popupContent = `
+                    <span class="popup-title">${toilet.tags.name || 'Öffentliche Toilette'}</span><br />
+                    <span class="popup-desc">Tags</span><br />${formatTags(toilet.tags)}<br />
+                    <span class="popup-desc">Koordinaten</span><br /> <span class="popup-coord">${latlng.join(', ')}</span> (lat/lon)
+                `;
+
+                const marker = L.marker(latlng, { icon: toiletIcon })
+                    .bindPopup(popupContent);
+
+                toilettenLayer.addLayer(marker);
             });
         }
     });
 }
 
+function formatTags(tags) {
+    const formattedTags = Object.entries(tags).map(([key, value]) => {
+        if (key === 'website') {
+            return `${key}: <a href="${value}" target="_blank">${value}</a>`;
+        } else {
+            return `${key}: ${value}`;
+        }
+    });
+
+    return formattedTags.join('<br>');
+}
+
 function buildOverpassQuery(bounds) {
     var query = '[out:json];' +
-        'node["amenity"="toilets"](' +
-        bounds.getSouthWest().lat + ',' + bounds.getSouthWest().lng + ',' +
-        bounds.getNorthEast().lat + ',' + bounds.getNorthEast().lng +
+        '(' +
+            'node["amenity"="toilets"](' +
+                bounds.getSouthWest().lat + ',' + bounds.getSouthWest().lng + ',' +
+                bounds.getNorthEast().lat + ',' + bounds.getNorthEast().lng +
+            ');' +
+            'way["amenity"="toilets"](' +
+                bounds.getSouthWest().lat + ',' + bounds.getSouthWest().lng + ',' +
+                bounds.getNorthEast().lat + ',' + bounds.getNorthEast().lng +
+            ');' +
+            'relation["amenity"="toilets"](' +
+                bounds.getSouthWest().lat + ',' + bounds.getSouthWest().lng + ',' +
+                bounds.getNorthEast().lat + ',' + bounds.getNorthEast().lng +
+            ');' +
+            'node["building"="toilets"](' +
+                bounds.getSouthWest().lat + ',' + bounds.getSouthWest().lng + ',' +
+                bounds.getNorthEast().lat + ',' + bounds.getNorthEast().lng +
+            ');' +
+            'way["building"="toilets"](' +
+                bounds.getSouthWest().lat + ',' + bounds.getSouthWest().lng + ',' +
+                bounds.getNorthEast().lat + ',' + bounds.getNorthEast().lng +
+            ');' +
+            'relation["building"="toilets"](' +
+                bounds.getSouthWest().lat + ',' + bounds.getSouthWest().lng + ',' +
+                bounds.getNorthEast().lat + ',' + bounds.getNorthEast().lng +
+            ');' +
         ');' +
         'out;';
-
     return query;
 }

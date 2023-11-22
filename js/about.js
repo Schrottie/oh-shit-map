@@ -1,8 +1,17 @@
-var sidebar = document.getElementById('sidebar');
-var sidebarToggle = document.getElementById('sidebarToggle');
-
-sidebarToggle.addEventListener('click', function () {
-    var isOpen = sidebar.style.right === '0px';
-    sidebar.style.right = isOpen ? '-300px' : '0px';
-    sidebarToggle.style.right = isOpen ? '0px' : '300px';
+document.addEventListener('DOMContentLoaded', function () {
+    var collapseArrow = document.getElementById('collapse-arrow');
+    if (collapseArrow) {
+        collapseArrow.addEventListener('click', function () {
+            var dropdownContent = document.getElementById('dropdown-content');
+            if (dropdownContent) {
+                if (dropdownContent.style.display === 'none' || dropdownContent.style.display === '') {
+                    dropdownContent.style.display = 'block';
+                    this.textContent = '▲';
+                } else {
+                    dropdownContent.style.display = 'none';
+                    this.textContent = '▼';
+                }
+            }
+        });
+    }
 });

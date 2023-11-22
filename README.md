@@ -1,9 +1,21 @@
 # Oh-Shit-Map
 
-Die "Oh-Shit-Map" ist eine Karte mit öffentlichen Toiletten auf Basis der Openstreetmap. 
+Die Oh-Shit-Map ist eine Fullscreen-Karte auf der öffentliche Toiletten dargestellt werden. Dabei wird versucht, möglichst alle in Openstreetmap aufgeführten, öffentlichen Toiletten zu erfassen. Das gelingt leider nicht immer, da nicht alle Toiletten korrekt getaggt sind.
 
-### ToDo
+### Credits
 
-* Routingfunktion für Läufer (ohne Markervorgabe)?
-* Attribution muss auch in Chrome for Mobile sichtbar sein
-* Wegbelagauswertung wie bei Komoot?
+Die Karte stammt von Openstreetmap, wo sie unter der CC BY 3.0 Lizenz veröffentlicht wird. Die Kartendaten stammen ebenfalls von Openstreetmap und sind unter der Open Database License veröffentlicht.
+
+Für die Darstellung der Karte auf dieser Seite kommt Leaflet zum Einsatz. Die Toilettendaten werden dabei mittels Overpass-API abgerufen.
+
+### ToDo/Wishes
+
+* Routingfunktion für Läufer
+* Wegbelagauswertung wie bei Komoot
+* Auswahl des bevorzugten Wegbelags (Asphalt, Waldwege, Singletrails)
+* Export von Strecken als GPX
+* Export der Toilettendaten als GPX
+
+### Known issues
+
+* in Chrome for mobile wird die Attribution line unten rechts nicht angezeigt

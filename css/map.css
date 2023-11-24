@@ -5,16 +5,75 @@ html, body {
   margin: 0;
 }
 
-#map-container {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  margin: 0;
-}
-
 #map {
 height: 100vh;
 z-index: 1;
+}
+
+#sidebar {
+  height: 98vh;
+  width: 300px;
+  position: fixed;
+  top: 0;
+  right: -300px;
+  transition: right 0.3s ease;
+  z-index: 2;
+  font-size: 0.8em;
+  background: #f6f6f6;
+  padding: 0;
+  border-left: solid 5px  rgba(64, 64, 64, 0.5);
+  border-bottom: solid 5px  rgba(64, 64, 64, 0.5);
+}
+
+#sidebar h1 {
+  font-family: 'Lexend Deca', sans-serif; 
+  margin: 0;
+  padding-top: 15px;
+  background:rgba(64, 64, 64, 0.5);
+  font-size: 1.5em;
+  color: #fff;
+  text-align: center;
+}
+
+#sidebar p.sidebar-hsub {
+  font-family: 'Lexend Deca', sans-serif; 
+  margin: 0;
+  padding: 10px 0 10px 0;
+  background:rgba(64, 64, 64, 0.5);
+  font-size: 0.9em;
+  color: #fff;
+  text-align: center;
+}
+
+#sidebar h2 {
+  color: maroon;
+  font-weight: bold;
+  font-size: 1.2em;
+  margin: 15px 5px 0 15px;
+}
+
+#sidebar p {
+  margin: 15px 5px 0 15px;
+}
+
+#sidebar.show {
+  right: 0;
+}
+
+#sidebar-toggle {
+  position: fixed;
+  top: 10px;
+  right: 0;
+  /*background-color: rgba(64, 64, 64, 0.5);*/
+  background: transparent;
+  transition: right 0.3s ease;
+  cursor: pointer;
+  z-index: 999;
+  border: none;
+}
+
+#sidebar-toggle.show {
+  right: 300px; 
 }
 
 #map-title {
@@ -29,75 +88,20 @@ z-index: 1;
   border-radius: 15px;
   border: solid 1px black;
   font-family: 'Lexend Deca', sans-serif; 
-  font-size: 1.8em;
+  font-size: 1.2em;
   color: black;
   z-index: 2;
   line-height: 0.4;
   text-align: center;
-  max-width: 400px;
+  max-width: 300px;
 }
         
 #map-title .sub {
-  font-size: 0.43em;
+  font-size: 0.53em;
+  line-height: 0.9;
   margin-top: 0px;
   padding-top: 0px;
 }
 
-#sidebar {
-  width: 300px;
-  height: 100%;
-  background-color: #fff;
-  position: fixed;
-  top: 0;
-  right: -300px; /* Anfangsposition außerhalb des sichtbaren Bereichs */
-  transition: right 0.3s ease; /* Animationsübergang für die Position */
-  overflow-y: auto; /* Falls der Inhalt zu groß für die Sidebar ist, scrollen ermöglichen */
-}
-
-#sidebarToggle {
-  position: fixed;
-  top: 0;
-  right: 0;
-  padding: 10px;
-  cursor: pointer;
-  background-color: #fff;
-  border-left: 1px solid #ddd;
-}
-
-#sidebarToggle img {
-  width: 24px;
-  height: 24px;
-}
-
-.popup-title {
-  color: maroon;
-  font-weight: bold;
-  font-size: 110%;
-}
-
-.popup-desc {
-  font-weight: bold;
-  color: #00BFFF;
-}
-
-.popup-coord {
-  color: #FE2E2E;
-}
-
-#dropdown-content {
-  display: none;
-  margin-top: 15px;
-  font-size: 0.43em;
-  line-height: 1.5;
-  text-align: left;
-  width: 350px; 
-  max-width: 90%;
-  word-wrap: break-word;
-  font-weight: 1;
-  overflow-y: auto;
-}
-
-#dropdown-content .header {
-  color: maroon;
-  font-weight: bold;
-}
+@media(max-width:599px){.only-small{display:inherit!important}.only-large{display:none!important}}
+@media(min-width:600px){.only-small{display:none!important}.only-large{display:inherit!important}}

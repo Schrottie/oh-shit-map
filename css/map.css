@@ -64,7 +64,6 @@ z-index: 1;
   position: fixed;
   top: 10px;
   right: 0;
-  /*background-color: rgba(64, 64, 64, 0.5);*/
   background: transparent;
   transition: right 0.3s ease;
   cursor: pointer;
@@ -73,6 +72,21 @@ z-index: 1;
 }
 
 #sidebar-toggle.show {
+  right: 300px; 
+}
+
+#download-button {
+  position: fixed;
+  bottom: 25px;
+  right: 0;
+  background: transparent;
+  transition: right 0.3s ease;
+  cursor: pointer;
+  z-index: 999;
+  border: none;
+}
+
+#download-button.show {
   right: 300px; 
 }
 

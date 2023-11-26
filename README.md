@@ -16,7 +16,6 @@ Für die Darstellung der Karte auf dieser Seite kommt Leaflet zum Einsatz. Die T
 * Wegbelagauswertung wie bei Komoot
 * Auswahl des bevorzugten Wegbelags (Asphalt, Waldwege, Singletrails)
 * Export von Strecken als GPX
-* Export der Toilettendaten als GPX
 
 ### Known issues
 

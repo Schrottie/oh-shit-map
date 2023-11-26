@@ -20,4 +20,4 @@ Für die Darstellung der Karte auf dieser Seite kommt Leaflet zum Einsatz. Die T
 
 ### Known issues
 
-* in Chrome for mobile wird die Attribution line unten rechts nicht angezeigt
+* n/a

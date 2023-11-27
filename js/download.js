@@ -1,12 +1,12 @@
 document.addEventListener('DOMContentLoaded', function () {
-    addDownloadButtonListener();
+    addDownloadLinkListener();
 });
 
-function addDownloadButtonListener() {
-    const downloadButton = document.getElementById('download-button');
+function addDownloadLinkListener() {
+    const downloadLink = document.getElementById('download-button');
 
-    if (downloadButton) {
-        downloadButton.addEventListener('click', downloadToilettenGPX);
+    if (downloadLink) {
+        downloadLink.addEventListener('click', downloadToilettenGPX);
     }
 }
 

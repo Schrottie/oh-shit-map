@@ -10,7 +10,7 @@ height: 100%;
 z-index: 1;
 }
 
-#sidebar {
+#sidebar, #downloadbar {
   height: 98vh;
   width: 300px;
   position: fixed;
@@ -25,7 +25,7 @@ z-index: 1;
   border-bottom: solid 5px  rgba(64, 64, 64, 0.5);
 }
 
-#sidebar h1 {
+#sidebar h1, #downloadbar h1 {
   font-family: 'Lexend Deca', sans-serif; 
   margin: 0;
   padding-top: 15px;
@@ -35,7 +35,7 @@ z-index: 1;
   text-align: center;
 }
 
-#sidebar p.sidebar-hsub {
+#sidebar p.sidebar-hsub, #downloadbar p.downloadbar-hsub {
   font-family: 'Lexend Deca', sans-serif; 
   margin: 0;
   padding: 10px 0 10px 0;
@@ -45,18 +45,18 @@ z-index: 1;
   text-align: center;
 }
 
-#sidebar h2 {
+#sidebar h2, #downloadbar h2 {
   color: maroon;
   font-weight: bold;
   font-size: 1.2em;
   margin: 15px 5px 0 15px;
 }
 
-#sidebar p {
+#sidebar p, #downloadbar p {
   margin: 15px 5px 0 15px;
 }
 
-#sidebar.show {
+#sidebar.show, #downloadbar.show {
   right: 0;
 }
 
@@ -71,13 +71,9 @@ z-index: 1;
   border: none;
 }
 
-#sidebar-toggle.show {
-  right: 300px; 
-}
-
-#download-button {
+#downloadbar-toggle {
   position: fixed;
-  bottom: 25px;
+  top: 50px;
   right: 0;
   background: transparent;
   transition: right 0.3s ease;
@@ -86,16 +82,43 @@ z-index: 1;
   border: none;
 }
 
-#download-button.show {
+#sidebar-toggle.show, #downloadbar-toggle.show {
   right: 300px; 
+}
+
+#sidebar-toggle.hidden, #downloadbar-toggle.hidden {
+  z-index: 0;
+  transition: z-index 0.3s ease;
+}
+
+#download-button {
+  background-color: rgba(64, 64, 64, 0.5);
+  color: #fff;
+  border: none;
+  padding: 3px 20px; 
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1.2em; /
+  margin: 4px 2px; 
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+  margin: 15px 0 15px 0;
+}
+
+#download-button:hover {
+  background-color: rgba(80, 80, 80, 0.5);
+}
+
+.center {
+  text-align: center;
 }
 
 #map-title {
   position: absolute;
   top: 10px;
-  /*left: 50%;*/
   right: 10px;
-  /*transform: translateX(-70%);*/
   padding: 5px 15px 14px 15px;
   margin-bottom: 0;
   background-color: rgba(255, 255, 255, 0.8); 

@@ -17,7 +17,7 @@ z-index: 1;
   top: 0;
   right: -300px;
   transition: right 0.3s ease;
-  z-index: 2;
+  z-index: 5;
   font-size: 0.8em;
   background: #f6f6f6;
   padding: 0;
@@ -67,7 +67,7 @@ z-index: 1;
   background: transparent;
   transition: right 0.3s ease;
   cursor: pointer;
-  z-index: 999;
+  z-index: 4;
   border: none;
 }
 
@@ -78,7 +78,7 @@ z-index: 1;
   background: transparent;
   transition: right 0.3s ease;
   cursor: pointer;
-  z-index: 999;
+  z-index: 4;
   border: none;
 }
 

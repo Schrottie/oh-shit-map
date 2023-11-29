@@ -1,4 +1,4 @@
-name: Deploy to FTP
+name: Deploy to Webserver
 
 on:
   push:
@@ -13,9 +13,12 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Deploy to FTP
+    - name: Deploy to SFTP
       uses: SamKirkland/FTP-Deploy-Action@4.0.0
       with:
-        ftp-server: www.maik-bischoff.de
-        ftp-username: ${{ secrets.FTP_USERNAME }}
-        ftp-password: ${{ secrets.FTP_PASSWORD }}
+        server: www.maik-bischoff.de
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        # Wenn server_dir nicht angegeben ist oder auf einen leeren String gesetzt wird,
+        # wird das Wurzelverzeichnis des Servers verwendet.
+        server_dir: ''

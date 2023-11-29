@@ -1,4 +1,4 @@
-name: Copy to Webserver
+name: Deploy to Webserver
 
 on:
   push:
@@ -13,11 +13,9 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Deploy to SFTP
-      uses: SamKirkland/FTP-Deploy-Action@4.0.0
-      with:
-        server: www.maik-bischoff.de
-        username: ${{ secrets.FTP_USERNAME }}
-        password: ${{ secrets.FTP_PASSWORD }}
-        #server_dir: /hosts/running.maik-bischoff.de/oh-shit-map
-        #delete: true
+    - name: Deploy using SSH
+      run: |
+        sshpass -e scp -r $GITHUB_WORKSPACE/* ${{ secrets.SSH_USERNAME }}@www.maik-bischoff.de:/
+      env:
+        SSH_PASSWORD: ${{ secrets.SSH_PASSWORD }}
+        SSH_USERNAME: ${{ secrets.SSH_USERNAME }}

@@ -1,4 +1,4 @@
-name: Deploy to SFTP
+name: Copy to Webserver
 
 on:
   push:

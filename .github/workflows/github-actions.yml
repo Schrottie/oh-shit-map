@@ -1,4 +1,4 @@
-name: Copy to Webserver
+name: Deploy to FTP
 
 on:
   push:
@@ -13,9 +13,12 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Deploy to SFTP
-      uses: SamKirkland/FTP-Deploy-Action@4.0.0
-      with:
-        server: www.maik-bischoff.de
-        username: ${{ secrets.FTP_USERNAME }}
-        password: ${{ secrets.FTP_PASSWORD }}
+    - name: Install lftp
+      run: sudo apt-get install lftp
+
+    - name: Deploy to FTP
+      run: |
+        lftp -e "set ssl:verify-certificate no; open -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} ftp://www.maik-bischoff.de; mirror -R -e -x .git/ --ignore-time . /hosts/running.maik-bischoff.de/oh-shit-map; bye"
+      env:
+        FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+        FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}

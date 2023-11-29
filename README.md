@@ -19,4 +19,4 @@ Für die Darstellung der Karte auf dieser Seite kommt Leaflet zum Einsatz. Die T
 
 ### Known issues
 
-* n/a
+* In einigen Fällen ist der Text der Sidebar höher als der verfügbare Platz, es wird aber kein Scrollbalken angezeigt. Auch lässt sich der Text dann, bei Touchdisplays, nicht verschieben.

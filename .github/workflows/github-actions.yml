@@ -21,4 +21,4 @@ jobs:
         password: ${{ secrets.FTP_PASSWORD }}
         # Wenn server_dir nicht angegeben ist oder auf einen leeren String gesetzt wird,
         # wird das Wurzelverzeichnis des Servers verwendet.
-        server_dir: ''
+        server-dir: ''

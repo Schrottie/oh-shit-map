@@ -15,30 +15,51 @@ function loadToilettenLayer(map, toilettenLayer) {
                 const latlng = [toilet.lat, toilet.lon];
 
                 const iconUrl = toilet.tags['toilets:position'] === 'urinal'
-                    ? 'img/no-klo.png'
+                    ? 'img/pipi.png'
                     : 'img/klo.png';
 
-                const toiletIcon = L.icon({
-                    iconUrl: iconUrl,
-                    iconSize: [32, 32],
-                    iconAnchor: [16, 32],
-                    popupAnchor: [0, -32],
-                });
-                
-                const popupContent = `
-                    <span class="popup-title">${toilet.tags.name || 'Öffentliche Toilette'}</span><br />
-                    <span class="popup-desc">Tags</span><br />${formatTags(toilet.tags)}<br />
-                    <span class="popup-desc">Koordinaten</span><br /> <span class="popup-coord">${latlng.join(', ')}</span> (lat/lon)
-                `;
+                if (toilet.tags.access && toilet.tags.access.toLowerCase() === 'permissive') {
+                    const forbiddenIcon = L.icon({
+                        iconUrl: 'img/no-klo.png',
+                        iconSize: [32, 32],
+                        iconAnchor: [16, 32],
+                        popupAnchor: [0, -32],
+                    });
 
-                const marker = L.marker(latlng, { icon: toiletIcon })
-                    .bindPopup(popupContent);
+                    const popupContent = `
+                        <span class="popup-title">${toilet.tags.name || 'Öffentliche Toilette'}</span><br />
+                        <span class="popup-desc">Tags</span><br />${formatTags(toilet.tags)}<br />
+                        <span class="popup-desc">Koordinaten</span><br /> <span class="popup-coord">${latlng.join(', ')}</span> (lat/lon)
+                    `;
 
-                toilettenLayer.addLayer(marker);
+                    const marker = L.marker(latlng, { icon: forbiddenIcon })
+                        .bindPopup(popupContent);
+
+                    toilettenLayer.addLayer(marker);
+                } else {
+                    const toiletIcon = L.icon({
+                        iconUrl: iconUrl,
+                        iconSize: [32, 32],
+                        iconAnchor: [16, 32],
+                        popupAnchor: [0, -32],
+                    });
+
+                    const popupContent = `
+                        <span class="popup-title">${toilet.tags.name || 'Öffentliche Toilette'}</span><br />
+                        <span class="popup-desc">Tags</span><br />${formatTags(toilet.tags)}<br />
+                        <span class="popup-desc">Koordinaten</span><br /> <span class="popup-coord">${latlng.join(', ')}</span> (lat/lon)
+                    `;
+
+                    const marker = L.marker(latlng, { icon: toiletIcon })
+                        .bindPopup(popupContent);
+
+                    toilettenLayer.addLayer(marker);
+                }
             });
         }
     });
 }
+
 
 function formatTags(tags) {
     const formattedTags = Object.entries(tags).map(([key, value]) => {

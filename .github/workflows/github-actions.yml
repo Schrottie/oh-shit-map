@@ -20,3 +20,4 @@ jobs:
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
         server_dir: /hosts/running.maik-bischoff.de/oh-shit-map
+        delete: true

@@ -1,10 +1,3 @@
-const toiletIcon = L.icon({
-    iconUrl: 'img/klo.png',
-    iconSize: [32, 32],
-    iconAnchor: [16, 32],
-    popupAnchor: [0, -32],
-});
-
 function loadToilettenLayer(map, toilettenLayer) {
     var bounds = map.getBounds();
     var overpassQuery = buildOverpassQuery(bounds);
@@ -20,6 +13,17 @@ function loadToilettenLayer(map, toilettenLayer) {
 
             data.elements.forEach(toilet => {
                 const latlng = [toilet.lat, toilet.lon];
+
+                const iconUrl = toilet.tags['toilets:position'] === 'urinal'
+                    ? 'img/no-klo.png'
+                    : 'img/klo.png';
+
+                const toiletIcon = L.icon({
+                    iconUrl: iconUrl,
+                    iconSize: [32, 32],
+                    iconAnchor: [16, 32],
+                    popupAnchor: [0, -32],
+                });
                 
                 const popupContent = `
                     <span class="popup-title">${toilet.tags.name || 'Öffentliche Toilette'}</span><br />

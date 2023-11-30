@@ -22,9 +22,15 @@ function loadToilettenLayer(map, toilettenLayer) {
                 const latlng = [toilet.lat, toilet.lon];
 
                 // Wähle das passende Icon für die Toilette basierend auf den Tags
-                const iconUrl = toilet.tags['toilets:position'] === 'urinal'
-                    ? 'img/pipi.png'
-                    : 'img/klo.png';
+                let iconUrl = 'img/klo.png';
+
+                if (toilet.tags['toilets:position'] === 'urinal' && 'charge' in toilet.tags) {
+                    iconUrl = 'img/urinal_charge.png';
+                } else if (toilet.tags['toilets:position'] === 'urinal') {
+                    iconUrl = 'img/pipi.png';
+                } else if ('charge' in toilet.tags) {
+                    iconUrl = 'img/klo_charge.png';
+                }
 
                 // Überprüfe, ob der Zugang zur Toilette erlaubt ist
                 if (toilet.tags.access && toilet.tags.access.toLowerCase() === 'permissive') {
@@ -47,7 +53,7 @@ function loadToilettenLayer(map, toilettenLayer) {
 
                     toilettenLayer.addLayer(marker);
                 } else {
-                    // Erstelle einen Marker mit normalem Toiletten-Icon und Popup-Inhalt
+                    // Erstelle einen Marker mit dem ausgewählten Icon und Popup-Inhalt
                     const toiletIcon = L.icon({
                         iconUrl: iconUrl,
                         iconSize: [32, 32],
@@ -70,6 +76,8 @@ function loadToilettenLayer(map, toilettenLayer) {
         }
     });
 }
+
+
 
 // Funktion zum Formatieren von Tags für die Anzeige im Popup
 function formatTags(tags) {

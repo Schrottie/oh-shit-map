@@ -19,4 +19,4 @@ Für die Darstellung der Karte auf dieser Seite kommt Leaflet zum Einsatz. Die T
 
 ### Known issues
 
-* n/a
+* In Chrome for mobile auf dem Tablet kommt es trotz overflow:auto in der Sidebar dazu, dass längere Inhalte nicht vollständig angezeigt werden.

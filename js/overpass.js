@@ -12,6 +12,8 @@ function loadToilettenLayer(map, toilettenLayer) {
     })
     .then(response => response.json())
     .then(data => {
+        console.log('Overpass Data:', data); // Überprüfe die Overpass-Daten im Konsolenprotokoll
+        
         // Überprüfe, ob Daten vorhanden sind
         if (data.elements) {
             // Lösche bestehende Marker in der Toiletten-LayerGroup
@@ -19,8 +21,21 @@ function loadToilettenLayer(map, toilettenLayer) {
 
             // Iteriere über die abgerufenen Toiletten-Daten und füge Marker hinzu
             data.elements.forEach(toilet => {
-                const latlng = [toilet.lat, toilet.lon];
-
+                let latlng;
+            
+                if (toilet.type === 'node') {
+                    latlng = [toilet.lat, toilet.lon];
+                } else if (toilet.type === 'way' && toilet.geometry && toilet.geometry.length > 0) {
+                    // Extrahiere nur das erste Koordinatenpaar aus der Geometrie
+                    const firstCoord = toilet.geometry[0];
+                    latlng = [firstCoord.lat, firstCoord.lon];
+                }
+// BEGIN DEBUG
+//                if (latlng.some(coord => coord === undefined)) {
+//                    console.error('Invalid LatLng Data:', toilet); // Überprüfe, ob es Toiletten mit ungültigen Koordinaten gibt
+//                    return; // Springe zum nächsten Durchlauf der Schleife, um den Fehler zu vermeiden
+//                }
+// END DEBUG
                 // Wähle das passende Icon für die Toilette basierend auf den Tags
                 let iconUrl = 'img/klo.png';
 
@@ -95,33 +110,7 @@ function formatTags(tags) {
 
 // Funktion zum Erstellen einer Overpass-Abfrage basierend auf den Kartenbegrenzungen
 function buildOverpassQuery(bounds) {
-    var query = '[out:json];' +
-        '(' +
-            'node["amenity"="toilets"](' +
-                bounds.getSouthWest().lat + ',' + bounds.getSouthWest().lng + ',' +
-                bounds.getNorthEast().lat + ',' + bounds.getNorthEast().lng +
-            ');' +
-            'way["amenity"="toilets"](' +
-                bounds.getSouthWest().lat + ',' + bounds.getSouthWest().lng + ',' +
-                bounds.getNorthEast().lat + ',' + bounds.getNorthEast().lng +
-            ');' +
-            'relation["amenity"="toilets"](' +
-                bounds.getSouthWest().lat + ',' + bounds.getSouthWest().lng + ',' +
-                bounds.getNorthEast().lat + ',' + bounds.getNorthEast().lng +
-            ');' +
-            'node["building"="toilets"](' +
-                bounds.getSouthWest().lat + ',' + bounds.getSouthWest().lng + ',' +
-                bounds.getNorthEast().lat + ',' + bounds.getNorthEast().lng +
-            ');' +
-            'way["building"="toilets"](' +
-                bounds.getSouthWest().lat + ',' + bounds.getSouthWest().lng + ',' +
-                bounds.getNorthEast().lat + ',' + bounds.getNorthEast().lng +
-            ');' +
-            'relation["building"="toilets"](' +
-                bounds.getSouthWest().lat + ',' + bounds.getSouthWest().lng + ',' +
-                bounds.getNorthEast().lat + ',' + bounds.getNorthEast().lng +
-            ');' +
-        ');' +
-        'out;';
-    return query;
+    return `[out:json][timeout:25];
+        nwr["amenity"~"toilets"](${bounds.getSouthWest().lat},${bounds.getSouthWest().lng},${bounds.getNorthEast().lat},${bounds.getNorthEast().lng});
+        out geom;`;
 }

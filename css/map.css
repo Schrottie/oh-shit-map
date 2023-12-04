@@ -10,7 +10,7 @@ height: 100%;
 z-index: 1;
 }
 
-#sidebar, #downloadbar, #helpbar {
+#sidebar, #downloadbar, #helpbar, #infobar {
   height: 98vh;
   width: 300px;
   position: fixed;
@@ -26,7 +26,7 @@ z-index: 1;
   overflow-y: auto;
 }
 
-#sidebar h1, #downloadbar h1, #helpbar h1 {
+#sidebar h1, #downloadbar h1, #helpbar h1, #infobar h1 {
   font-family: 'Lexend Deca', sans-serif; 
   margin: 0;
   padding-top: 15px;
@@ -36,7 +36,7 @@ z-index: 1;
   text-align: center;
 }
 
-#sidebar p.sidebar-hsub, #downloadbar p.downloadbar-hsub, #helpbar p.helpbar-hsub {
+#sidebar p.sidebar-hsub, #downloadbar p.downloadbar-hsub, #helpbar p.helpbar-hsub, #infobar p.infobar-hsub {
   font-family: 'Lexend Deca', sans-serif; 
   margin: 0;
   padding: 10px 0 10px 0;
@@ -46,18 +46,18 @@ z-index: 1;
   text-align: center;
 }
 
-#sidebar h2, #downloadbar h2, #helpbar h2 {
+#sidebar h2, #downloadbar h2, #helpbar h2, #infobar h2 {
   color: maroon;
   font-weight: bold;
   font-size: 1.2em;
   margin: 15px 5px 0 15px;
 }
 
-#sidebar p, #downloadbar p, #helpbar p {
+#sidebar p, #downloadbar p, #helpbar p, #infobar p {
   margin: 15px 5px 0 15px;
 }
 
-#sidebar.show, #downloadbar.show, #helpbar.show {
+#sidebar.show, #downloadbar.show, #helpbar.show, #infobar.show {
   right: 0;
 }
 
@@ -94,11 +94,22 @@ z-index: 1;
   border: none;
 }
 
-#sidebar-toggle.show, #downloadbar-toggle.show, #helpbar-toggle.show {
+#infobar-toggle {
+  position: fixed;
+  top: 130px;
+  right: 0;
+  background: transparent;
+  transition: right 0.3s ease;
+  cursor: pointer;
+  z-index: 4;
+  border: none;
+}
+
+#sidebar-toggle.show, #downloadbar-toggle.show, #helpbar-toggle.show, #infobar-toggle.show {
   right: 300px; 
 }
 
-#sidebar-toggle.hidden, #downloadbar-toggle.hidden, #helpbar-toggle.hidden {
+#sidebar-toggle.hidden, #downloadbar-toggle.hidden, #helpbar-toggle.hidden, #infobar-toggle.hidden {
   z-index: 0;
   transition: z-index 0.3s ease;
 }

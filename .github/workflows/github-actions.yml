@@ -1,0 +1,24 @@
+name: Deploy to Webserver
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Deploy to SFTP
+      uses: SamKirkland/FTP-Deploy-Action@4.0.0
+      with:
+        server: www.maik-bischoff.de
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        # Wenn server_dir nicht angegeben ist oder auf einen leeren String gesetzt wird,
+        # wird das Wurzelverzeichnis des Servers verwendet.
+        server-dir: ''

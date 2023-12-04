@@ -90,7 +90,7 @@ z-index: 1;
   background: transparent;
   transition: right 0.3s ease;
   cursor: pointer;
-  z-index: 4;
+  z-index: 25;
   border: none;
 }
 
@@ -101,7 +101,7 @@ z-index: 1;
   background: transparent;
   transition: right 0.3s ease;
   cursor: pointer;
-  z-index: 4;
+  z-index: 25;
   border: none;
 }
 

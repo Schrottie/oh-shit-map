@@ -1,4 +1,3 @@
-// Funktion zum Laden und Anzeigen von Toiletten-Daten auf der Karte
 // Funktion zum Laden und Anzeigen von Trinkwasser-Daten auf der Karte
 function loadTrinkwasserLayer(map, trinkwasserLayer) {
     // Ermittle die Begrenzungen der aktuellen Kartenansicht

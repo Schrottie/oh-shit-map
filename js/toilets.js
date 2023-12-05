@@ -3,7 +3,7 @@ function loadToilettenLayer(map, toilettenLayer) {
     // Ermittle die Begrenzungen der aktuellen Kartenansicht
     var bounds = map.getBounds();
     // Baue eine Overpass-Abfrage basierend auf den Kartenbegrenzungen
-    var overpassQuery = buildOverpassQuery(bounds);
+    var overpassQuery = buildToiletQuery(bounds);
 
     // Führe einen POST-Request zur Overpass-API durch, um Toiletten-Daten abzurufen
     fetch('https://overpass-api.de/api/interpreter', {
@@ -141,7 +141,7 @@ function formatTags(tags) {
 }
 
 // Funktion zum Erstellen einer Overpass-Abfrage basierend auf den Kartenbegrenzungen
-function buildOverpassQuery(bounds) {
+function buildToiletQuery(bounds) {
     return `[out:json][timeout:25];
         nwr["amenity"~"toilets"](${bounds.getSouthWest().lat},${bounds.getSouthWest().lng},${bounds.getNorthEast().lat},${bounds.getNorthEast().lng});
         out geom;`;

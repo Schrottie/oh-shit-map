@@ -1,17 +1,29 @@
 // Warte darauf, dass das DOM vollständig geladen ist, bevor das Skript ausgeführt wird
 document.addEventListener('DOMContentLoaded', function () {
-    // Füge einen Event-Listener für den Download-Button hinzu, wenn das DOM geladen ist
-    addDownloadLinkListener();
+    // Füge die Event-Listener für den Download-Button hinzu, wenn das DOM geladen ist
+    addToiletDownloadLinkListener();
+    addWaterDownloadLinkListener();
 });
 
-// Funktion zum Hinzufügen des Event-Listeners für den Download-Button
-function addDownloadLinkListener() {
+// Funktion zum Hinzufügen des Event-Listeners für den Toiletten-Download-Button
+function addToiletDownloadLinkListener() {
     // Finde das DOM-Element des Download-Buttons anhand der ID
-    const downloadLink = document.getElementById('download-button');
+    const downloadLinkT = document.getElementById('download-toilets');
 
     // Wenn der Download-Button gefunden wurde, füge einen Event-Listener hinzu
-    if (downloadLink) {
-        downloadLink.addEventListener('click', downloadToilettenGPX);
+    if (downloadLinkT) {
+        downloadLinkT.addEventListener('click', downloadToilettenGPX);
+    }
+}
+
+// Funktion zum Hinzufügen des Event-Listeners für den Wasser-Download-Button
+function addWaterDownloadLinkListener() {
+    // Finde das DOM-Element des Download-Buttons anhand der ID
+    const downloadLinkW = document.getElementById('download-water');
+
+    // Wenn der Download-Button gefunden wurde, füge einen Event-Listener hinzu
+    if (downloadLinkW) {
+        downloadLinkW.addEventListener('click', downloadWaterGPX);
     }
 }
 
@@ -20,7 +32,7 @@ function downloadToilettenGPX() {
     // Ermittle die Begrenzungen der aktuellen Kartenansicht
     var bounds = map.getBounds();
     // Baue eine Overpass-Abfrage basierend auf den Kartenbegrenzungen
-    var overpassQuery = buildOverpassQuery(bounds);
+    var overpassQuery = buildToiletQuery(bounds);
 
     // Führe einen POST-Request zur Overpass-API durch, um Toiletten-Daten abzurufen
     fetch('https://overpass-api.de/api/interpreter', {
@@ -44,6 +56,34 @@ function downloadToilettenGPX() {
     });
 }
 
+// Funktion zum Herunterladen von Trinkwasser-Daten im GPX-Format
+function downloadWaterGPX() {
+    // Ermittle die Begrenzungen der aktuellen Kartenansicht
+    var bounds = map.getBounds();
+    // Baue eine Overpass-Abfrage basierend auf den Kartenbegrenzungen
+    var overpassQuery = buildWaterQuery(bounds);
+
+    // Führe einen POST-Request zur Overpass-API durch, um Toiletten-Daten abzurufen
+    fetch('https://overpass-api.de/api/interpreter', {
+        method: 'POST',
+        body: overpassQuery
+    })
+    .then(response => response.json())
+    .then(data => {
+        // Wenn Daten vorhanden sind, erstelle eine GPX-Datei und lade sie herunter
+        if (data.elements) {
+            const gpxData = createGPX(data.elements);
+            downloadFile(gpxData, 'trinkwasser.gpx');
+        } else {
+            // Wenn keine Toiletten-Daten gefunden wurden, gib eine Fehlermeldung aus
+            console.error('Keine Trinkwasserstellen gefunden.');
+        }
+    })
+    .catch(error => {
+        // Behandele Fehler beim Abrufen der Toiletten-Daten
+        console.error('Fehler beim Abrufen der Trinkwasser-Daten:', error);
+    });
+}
 // Funktion zum Erstellen von GPX-Daten aus den abgerufenen Toiletten-Elementen
 function createGPX(elements) {
     // Initialisiere einen GPXBuilder
@@ -92,7 +132,7 @@ class GPXBuilder {
     constructor() {
         // Initialisiere die GPX-Daten mit dem Header
         this.gpxData = '<?xml version="1.0" encoding="UTF-8" standalone="no" ?>\n' +
-            '<gpx version="1.1" creator="YourAppName">\n' +
+            '<gpx version="1.1" creator="Oh-Shit-Map">\n' +
             '<trk>\n' +
             '<trkseg>\n';
     }

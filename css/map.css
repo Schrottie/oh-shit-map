@@ -36,7 +36,7 @@ z-index: 1;
   text-align: center;
 }
 
-#sidebar p.sidebar-hsub, #layerbar p.layerbar-hsub, #downloadbar p.downloadbar-hsub, #helpbar p.helpbar-hsub, #infobar p.infobar-hsub {
+#sidebar p.hsub, #layerbar p.hsub, #downloadbar p.hsub, #helpbar p.hsub, #infobar p.hsub {
   font-family: 'Lexend Deca', sans-serif; 
   margin: 0;
   padding: 10px 0 10px 0;
@@ -61,59 +61,39 @@ z-index: 1;
   right: 0;
 }
 
-#sidebar-toggle {
+.the-toggles {
   position: fixed;
-  top: 10px;
   right: 0;
-  background: transparent;
+  background: rgba(64, 64, 64, 0.5);
   transition: right 0.3s ease;
   cursor: pointer;
   z-index: 4;
   border: none;
+  width: 32px;
+  height: 32px;
+  text-align: center;
+  color: white;
+  padding-top: 4px;
+}
+
+#sidebar-toggle {
+  top: 10px;
 }
 
 #layerbar-toggle {
-  position: fixed;
   top: 50px;
-  right: 0;
-  background: transparent;
-  transition: right 0.3s ease;
-  cursor: pointer;
-  z-index: 4;
-  border: none;
 }
 
 #downloadbar-toggle {
-  position: fixed;
   top: 90px;
-  right: 0;
-  background: transparent;
-  transition: right 0.3s ease;
-  cursor: pointer;
-  z-index: 25;
-  border: none;
 }
 
 #helpbar-toggle {
-  position: fixed;
   top: 130px;
-  right: 0;
-  background: transparent;
-  transition: right 0.3s ease;
-  cursor: pointer;
-  z-index: 25;
-  border: none;
 }
 
 #infobar-toggle {
-  position: fixed;
   top: 170px;
-  right: 0;
-  background: transparent;
-  transition: right 0.3s ease;
-  cursor: pointer;
-  z-index: 25;
-  border: none;
 }
 
 #sidebar-toggle.show, #layerbar-toggle.show, #downloadbar-toggle.show, #helpbar-toggle.show, #infobar-toggle.show {
@@ -143,7 +123,7 @@ z-index: 1;
   margin-right: 10px;
 }
 
-#download-button {
+.download-button {
   background-color: rgba(64, 64, 64, 0.5);
   color: #fff;
   border: none;
@@ -159,7 +139,7 @@ z-index: 1;
   margin: 15px 0 15px 0;
 }
 
-#download-button:hover {
+.download-button:hover {
   background-color: rgba(80, 80, 80, 0.5);
 }
 

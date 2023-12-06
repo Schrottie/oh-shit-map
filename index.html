@@ -38,80 +38,89 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@400&display=swap">
     <!-- Bootstrap Styles -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
 </head>
 <body>
-        <div id="map-title" class="only-small">
+        <div id="map-title" class="the-bars only-small">
             <img src="img/klo.png" width="32" height="32" style="margin-right: 10px; margin-left: 10px;" />
             Oh-Shit-Map
             <img src="img/klo.png" width="32" height="32" style="margin-right: 10px; margin-left: 10px;" />
             <br /><span class="sub">proudly presented by:<br /><br />Schrotties Laufblog  &raquo;<a href="https://running.maik-bischoff.de/about-oh-shit-map/" target="foo">100 Meilen</a>&laquo;</span>
         </div>
-        <div id="sidebar" class="only-large">
+        <div id="sidebar" class="the-bars only-large">
             <h1><img src="img/klo.png" width="32" height="32" style="margin-right: 10px; margin-left: 10px;" /> Oh-Shit-Map <img src="img/klo.png" width="32" height="32" style="margin-right: 10px; margin-left: 10px;" /></h1>
-            <p class="sidebar-hsub">proudly presented by:<br />Schrotties Laufblog  &raquo;<a href="https://running.maik-bischoff.de/about-oh-shit-map/" target="foo">100 Meilen</a>&laquo;</p>
+            <p class="hsub">proudly presented by:<br />Schrotties Laufblog  &raquo;<a href="https://running.maik-bischoff.de/about-oh-shit-map/" target="foo">100 Meilen</a>&laquo;</p>
             <h2>Über diese Karte</h2>
             <p>Die Oh-Shit-Map ist eine Fullscreen-Karte auf der öffentliche Toiletten dargestellt werden. Dabei wird versucht, möglichst alle in Openstreetmap aufgeführten, öffentlichen Toiletten zu erfassen. Das gelingt leider nicht immer, da nicht alle Toiletten korrekt getaggt sind.</p>
             <h2>Credits</h2>
             <p>Die Karte stammt von <a href="https://www.openstreetmap.org/copyright">Openstreetmap</a>, wo sie unter der <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank">CC BY 3.0 Lizenz</a> veröffentlicht wird. Die Kartendaten stammen ebenfalls von Openstreetmap und sind unter der <a href="https://opendatacommons.org/licenses/odbl/" target="_blank">Open Database License</a> veröffentlicht.</p>
-            <p>Für die Darstellung der Karte auf dieser Seite kommt <a href="https://leafletjs.com/" target="_blank">Leaflet</a> zum Einsatz. Die Toilettendaten werden dabei mittels <a href="https://overpass-api.de/" target="_blank">Overpass-API</a> abgerufen. Die Sidebar wurde mit Hilfe von <a href="https://getbootstrap.com/" target="_blank">Bootstrap</a> und <a href="https://jquery.com/" target="_blank">JQuery</a> realisiert.</p>
+            <p>Für die Darstellung der Karte auf dieser Seite kommt <a href="https://leafletjs.com/" target="_blank">Leaflet</a> zum Einsatz. Die Toilettendaten werden dabei mittels <a href="https://overpass-api.de/" target="_blank">Overpass-API</a> abgerufen. Die Sidebar wurde mit Hilfe von <a href="https://getbootstrap.com/" target="_blank">Bootstrap</a> und <a href="https://jquery.com/" target="_blank">JQuery</a> realisiert, die Sidebar-Icons stammen von <a href="https://fontawesome.com/" target="_blank">Font Awesome</a>.</p>
             <h2>Mitmachen</h2>
             <p>Die Oh-Shit-Map ist als <a href="https://github.com/Schrottie/oh-shit-map" target="_blank">Github-Repository</a> verfügbar und darf jederzeit erweitert werden.</p>
             <p>&nbsp;</p>
         </div>
-        <div id="sidebar-toggle" class="btn btn-dark only-large">
-            <img src="img/info.png" alt="Info" width="32" height="32">
+        <div id="sidebar-toggle" class="the-toggles only-large">
+            <i class="fa-solid fa-info"></i>
         </div>
-        <div id="layerbar" class="only-large">
+        <div id="layerbar" class="the-bars only-large">
             <h1><img src="img/klo.png" width="32" height="32" style="margin-right: 10px; margin-left: 10px;" /> Oh-Shit-Map <img src="img/klo.png" width="32" height="32" style="margin-right: 10px; margin-left: 10px;" /></h1>
-            <p class="layerbar-hsub">proudly presented by:<br />Schrotties Laufblog  &raquo;<a href="https://running.maik-bischoff.de/about-oh-shit-map/" target="foo">100 Meilen</a>&laquo;</p>
+            <p class="hsub">proudly presented by:<br />Schrotties Laufblog  &raquo;<a href="https://running.maik-bischoff.de/about-oh-shit-map/" target="foo">100 Meilen</a>&laquo;</p>
             <h2>Layerauswahl</h2>
             <p>Hier können verfügbare Layer aus- und eingeblendet werden.</p>
             <div id="checkboxes"></div>
         </div>
-        <div id="layerbar-toggle" class="btn btn-dark only-large">
-            <img src="img/layer.png" alt="Layerauswahl" width="32" height="32">
+        <div id="layerbar-toggle" class="the-toggles only-large">
+            <i class="fa-solid fa-layer-group"></i>
         </div>
-        <div id="downloadbar" class="only-large">
+        <div id="downloadbar" class="the-bars only-large">
             <h1><img src="img/klo.png" width="32" height="32" style="margin-right: 10px; margin-left: 10px;" /> Oh-Shit-Map <img src="img/klo.png" width="32" height="32" style="margin-right: 10px; margin-left: 10px;" /></h1>
-            <p class="downloadbar-hsub">proudly presented by:<br />Schrotties Laufblog  &raquo;<a href="https://running.maik-bischoff.de/about-oh-shit-map/" target="foo">100 Meilen</a>&laquo;</p>
+            <p class="hsub">proudly presented by:<br />Schrotties Laufblog  &raquo;<a href="https://running.maik-bischoff.de/about-oh-shit-map/" target="foo">100 Meilen</a>&laquo;</p>
             <h2>Download</h2>
-            <p>Die aktuell angezeigten Toiletten können hier als GPX heruntergeladen werden, bspw. um sie auf dem Wander-GPS, dem Smartphone in einer geeigneten App oder anderweitig zu nutzen.</p>
+            <p><img src="img/klo.png" width="28" height="28" style="margin-right: 10px; float: left;" />Die aktuell angezeigten Toiletten können hier als GPX heruntergeladen werden, bspw. um sie auf dem Wander-GPS, dem Smartphone in einer geeigneten App oder anderweitig zu nutzen.</p>
             <div class="center">
-                <button id="download-button">Download GPX</button>
+                <button id="download-toilets" class="download-button">Download GPX</button>
+            </div>
+            <p>Werden aktuell keine Toiletten angezeigt, sind entweder keine da, oder sie wurden ausgeblendet. Wurden sie ausgeblendet, funktioniert der Download natürlich trotzdem.</p>
+            <p><img src="img/wasser.png" width="28" height="28" style="margin-right: 10px; float: left;" />Für den Fall, dass auch (oder nur) Trinkwasserstellen angezeigt werden, können die hier ebenfalls als GPX heruntergeladen werden. Und wenn sie gerade nicht angezeigt werden, funktioniert der Download natürlich trotzdem. Nur ohne hingucken.</p>
+            <div class="center">
+                <button id="download-water" class="download-button">Download GPX</button>
             </div>
         </div>
-        <div id="downloadbar-toggle" class="btn btn-dark only-large">
-            <img src="img/download.png" alt="Download GPX" width="32" height="32">
+        <div id="downloadbar-toggle" class="the-toggles only-large">
+            <i class="fa-solid fa-download"></i>
         </div>
-        <div id="helpbar" class="only-large">
+        <div id="helpbar" class="the-bars only-large">
             <h1><img src="img/klo.png" width="32" height="32" style="margin-right: 10px; margin-left: 10px;" /> Oh-Shit-Map <img src="img/klo.png" width="32" height="32" style="margin-right: 10px; margin-left: 10px;" /></h1>
-            <p class="helpbar-hsub">proudly presented by:<br />Schrotties Laufblog  &raquo;<a href="https://running.maik-bischoff.de/about-oh-shit-map/" target="foo">100 Meilen</a>&laquo;</p>
+            <p class="hsub">proudly presented by:<br />Schrotties Laufblog  &raquo;<a href="https://running.maik-bischoff.de/about-oh-shit-map/" target="foo">100 Meilen</a>&laquo;</p>
             <h2>Hilfe n&ouml;tig?</h2>
             <p>Nicht alle der in Openstreetmap aufgeführten Toiletten können auch für das &raquo;große Geschäft&laquo; verwendet werden. Da wäre bspw. das berühmte Berliner &raquo;Caf&eacute; Achteck&laquo;. Aus diesem Grunde sind einige der Toiletten besonders gekennzeichnet. Gleiches gilt für das Thema Zugänglichkeit, denn manche Toiletten sind nur zu bestimmten Zeiten oder für bestimmte Personengruppen nutzbar.</p>
             <h2>Aktuell verwendete Icons</h2>
-            <p><img src="img/klo.png" width="55" height="55" style="margin-right: 10px; margin-left: 10px;" /></p>
+            <p><img src="img/klo.png" width="28" height="28" style="margin-right: 10px; float: left;" /></p>
             <p>Diese Toiletten sind laut Openstreetmap &raquo;vollwertige&laquo; Toiletten.</p>
-            <p><img src="img/kundenklo.png" width="55" height="55" style="margin-right: 10px; margin-left: 10px;" /></p>
+            <p><img src="img/kundenklo.png" width="28" height="28" style="margin-right: 10px; float: left;" /></p>
             <p>Wie oben, nur dass diese Toiletten als Kundenklo gekennzeichnet sind, also einerseits vermutlich nicht ständig erreichbar sind und man entweder Kunde sein, oder ganz lieb fragen muss.</p>
-            <p><img src="img/pipi.png" width="55" height="55" style="margin-right: 10px; margin-left: 10px;" /></p>
+            <p><img src="img/pipi.png" width="28" height="28" style="margin-right: 10px; float: left;" /></p>
             <p>Alle als Urinal gekennzeichneten Toiletten. Hier kann also nur schnell Pipi gemacht werden. Was ja zuweilen auch mal ganz wichtig ist.</p>
-            <p><img src="img/kundenpipi.png" width="55" height="55" style="margin-right: 10px; margin-left: 10px;" /></p>
+            <p><img src="img/kundenpipi.png" width="28" height="28" style="margin-right: 10px; float: left;" /></p>
             <p>Analog zum Kundenklo, hier eben nur als &raquo;Pipibude&laquo;.</p>
-            <p><img src="img/no-klo.png" width="55" height="55" style="margin-right: 10px; margin-left: 10px;" /></p>
+            <p><img src="img/no-klo.png" width="28" height="28" style="margin-right: 10px; float: left;" /></p>
             <p>Hier steht zwar ein Klo, aber der Zugang ist beschränkt. Manchmal schränken nur Öffnungszeiten die Zugänglichkeit ein, manchmal aber auch andere Gründe. Mehr Auskunft gibt hier oft ein Klick auf das Icon.</p>
-            <p><img src="img/klo_charge.png" width="55" height="55" style="margin-right: 10px; margin-left: 10px;" /></p>
+            <p><img src="img/klo_charge.png" width="28" height="28" style="margin-right: 10px; float: left;" /></p>
             <p>Hier handelt es sich um als kostenpflichtig gekennzeichnete Toiletten. Zumeist steht der Preis mit dabei, kann also im Popup abgelesen werden.</p>
-            <p><img src="img/pipi_charge.png" width="55" height="55" style="margin-right: 10px; margin-left: 10px;" /></p>
-            <p class="bottom-space">Das Gleiche in grün, ähh, gelb. 🤭 Hier ist nur ein Urinal vorhanden, aber auch das ist als kostenpflichtig gekennzeichnet.</p>
+            <p><img src="img/pipi_charge.png" width="28" height="28" style="margin-right: 10px; float: left;" /></p>
+            <p>Das Gleiche in grün, ähh, gelb. 🤭 Hier ist nur ein Urinal vorhanden, aber auch das ist als kostenpflichtig gekennzeichnet.</p>
+            <p><img src="img/wasser.png" width="28" height="28" style="margin-right: 10px; float: left;" /></p>
+            <p class="bottom-space">(Zusätzlich einblendbarer Layer!) Dieses Icon zeigt, dass es hier Trinkwasser gibt. Wer also bei seinem Läufchen nicht nur unten Druck, sondern auch oben Zug verspürt, ist hier genau richtig.</p>
             <p>&nbsp;</p>
             </div>
-        <div id="helpbar-toggle" class="btn btn-dark only-large">
-            <img src="img/help.png" alt="Hilfe" width="32" height="32">
+        <div id="helpbar-toggle" class="the-toggles only-large">
+            <i class="fa-solid fa-question"></i>
         </div>
-        <div id="infobar" class="only-large">
+        <div id="infobar" class="the-bars only-large">
             <h1><img src="img/klo.png" width="32" height="32" style="margin-right: 10px; margin-left: 10px;" /> Oh-Shit-Map <img src="img/klo.png" width="32" height="32" style="margin-right: 10px; margin-left: 10px;" /></h1>
-            <p class="infobar-hsub">proudly presented by:<br />Schrotties Laufblog  &raquo;<a href="https://running.maik-bischoff.de/about-oh-shit-map/" target="foo">100 Meilen</a>&laquo;</p>
+            <p class="hsub">proudly presented by:<br />Schrotties Laufblog  &raquo;<a href="https://running.maik-bischoff.de/about-oh-shit-map/" target="foo">100 Meilen</a>&laquo;</p>
             <h2>Impressum</h2>
             <p>Die Oh-Shit-Map wird entwickelt und gehostet von</p>
             <p><span style="font-weight: bold;">Maik Bischoff<br />Pichelsdorfer Straße 45<br />13595 Berlin</span></p>
@@ -132,8 +141,11 @@
             <p class="bottom-space">An dieser Stelle sage ich schon mal vielen Dank! 🥰</p>
             <p>&nbsp;</p>
             </div>
-        <div id="infobar-toggle" class="btn btn-dark only-large">
-            <img src="img/paragraph.png" alt="Rechtsgedöns" width="32" height="32">
+        <div id="infobar-toggle" class="the-toggles only-large">
+            <i class="fa-solid fa-mug-hot"></i>
+        </div>
+        <div id="close-button" class="only-large">
+            <i class="fa-solid fa-xmark"></i>
         </div>
         <div id="map" >/div>
 
@@ -144,7 +156,7 @@
     <script src="js/layer.js"></script>
     <script src="js/toilets.js"></script>
     <script src="js/water.js"></script>
-    <script src="js/geolocation.js"></script>
+    <script src="_js/geolocation.js"></script>
     <script src="js/map.js"></script>
     <script src="js/sidebar.js"></script>
     <script src="js/download.js"></script>

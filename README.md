@@ -9,7 +9,7 @@ An der Karte darf selbstverständlich mitgearbeitet werden. Allerdings behalte i
 ### Was brachte die letzte Änderung?
 
 * Die Sidebar-Icons sind nun keine Grafiken meh, sondern werden von Font Awesome geliefert.
-+ Es kann ein zusätzlicher Layer mit Trinkwasserstellen eingeblendet werden, dessen daten selbstredend auch heruntergeladen werden können.
++ Es kann ein zusätzlicher Layer mit Trinkwasserstellen eingeblendet werden, dessen Daten selbstredend auch heruntergeladen werden können.
 
 ### Credits
 

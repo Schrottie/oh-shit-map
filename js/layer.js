@@ -33,6 +33,7 @@ function addCheckbox(labelText, checkboxId, isChecked, descriptionText) {
 // Füge Checkboxen für Toiletten und Trinkwasserstellen hinzu
 addCheckbox("Toiletten", "toilettenCheckbox", true, "Dieser Layer zeigt alle in Openstreetmap verzeichneten Toiletten im aktuell angezeigten Kartenausschnitt. (Standard)"); 
 addCheckbox("Trinkwasserstellen", "trinkwasserCheckbox", false, "Dieser Layer zeigt in Openstreetmap eingetragene Trinkwasserstellen des aktuellen Kartenausschnittes. Die sind ja für Läufer oft auch ganz interessant, manch einer bekommt schließlich zuweilen Durst und hat nichts zu trinken dabei. 😉");
+addCheckbox("Friedhöfe", "friedhofCheckbox", false, "Friedhöfe? Hier auf einer Karte für Läufer? 😦 Ja, und zwar aus ganz einfachem Grund: Auf Friedhöfen findet man häufig Wasserhähne aus denen Trinkwasser kommt. Und wenn man mal auf besonders langem Lauf ist, besonders Ultraläufer sind da ja durchaus auch mal Überland unterwegs, dann kann hier im Notfall das Wasser aufgefüllt werden. Radfahrer machen das übrigens auch so.");
 
 // Füge einen Event-Listener zur Checkbox für Toiletten hinzu
 document.getElementById('toilettenCheckbox').addEventListener('change', function () {
@@ -62,4 +63,19 @@ document.getElementById('trinkwasserCheckbox').addEventListener('change', functi
 document.getElementById('trinkwasserCheckbox').addEventListener('change', function () {
     // Lade den Trinkwasserlayer basierend auf dem aktuellen Zustand der Checkbox
     loadTrinkwasserLayer(map, trinkwasserLayer, this.checked);
+});
+
+// Füge einen Event-Listener zur Checkbox für Friedhöfe hinzu
+document.getElementById('friedhofCheckbox').addEventListener('change', function () {
+    if (this.checked) {
+        friedhofLayer.addTo(map);
+    } else {
+        map.removeLayer(friedhofLayer);
+    }
+});
+
+// Füge einen Event-Listener für das 'change'-Event der Friedhof-Checkbox hinzu
+document.getElementById('friedhofCheckbox').addEventListener('change', function () {
+    // Lade den Friedhoflayer basierend auf dem aktuellen Zustand der Checkbox
+    loadFriedhofLayer(map, friedhofLayer, this.checked);
 });

@@ -43,12 +43,16 @@
 
 </head>
 <body>
+        <!-- Kartentitel für schmale Viewports, bspw. Smartphone im Portraitmode -->
         <div id="map-title" class="the-bars only-small">
             <img src="img/klo.png" width="32" height="32" style="margin-right: 10px; margin-left: 10px;" />
             Oh-Shit-Map
             <img src="img/klo.png" width="32" height="32" style="margin-right: 10px; margin-left: 10px;" />
             <br /><span class="sub">proudly presented by:<br /><br />Schrotties Laufblog  &raquo;<a href="https://running.maik-bischoff.de/about-oh-shit-map/" target="foo">100 Meilen</a>&laquo;</span>
         </div>
+
+        <!-- Sidebars bei breiteren Viewports, bspw. Monitor, Tablet, Smartphone im Landscapemode -->
+        <!-- Standardsidebar, Infoicon, erklärt die Karte -->
         <div id="sidebar" class="the-bars only-large">
             <h1><img src="img/klo.png" width="32" height="32" style="margin-right: 10px; margin-left: 10px;" /> Oh-Shit-Map <img src="img/klo.png" width="32" height="32" style="margin-right: 10px; margin-left: 10px;" /></h1>
             <p class="hsub">proudly presented by:<br />Schrotties Laufblog  &raquo;<a href="https://running.maik-bischoff.de/about-oh-shit-map/" target="foo">100 Meilen</a>&laquo;</p>
@@ -64,6 +68,8 @@
         <div id="sidebar-toggle" class="the-toggles only-large">
             <i class="fa-solid fa-info"></i>
         </div>
+
+        <!-- Layersidebar, Layericon, hier werden verschiedene layer an- und ausgeschaltet -->
         <div id="layerbar" class="the-bars only-large">
             <h1><img src="img/klo.png" width="32" height="32" style="margin-right: 10px; margin-left: 10px;" /> Oh-Shit-Map <img src="img/klo.png" width="32" height="32" style="margin-right: 10px; margin-left: 10px;" /></h1>
             <p class="hsub">proudly presented by:<br />Schrotties Laufblog  &raquo;<a href="https://running.maik-bischoff.de/about-oh-shit-map/" target="foo">100 Meilen</a>&laquo;</p>
@@ -74,6 +80,8 @@
         <div id="layerbar-toggle" class="the-toggles only-large">
             <i class="fa-solid fa-layer-group"></i>
         </div>
+        
+        <!-- Downloadsidebar, Downloadicon, hier können die Kartendaten heruntergeladen werden -->
         <div id="downloadbar" class="the-bars only-large">
             <h1><img src="img/klo.png" width="32" height="32" style="margin-right: 10px; margin-left: 10px;" /> Oh-Shit-Map <img src="img/klo.png" width="32" height="32" style="margin-right: 10px; margin-left: 10px;" /></h1>
             <p class="hsub">proudly presented by:<br />Schrotties Laufblog  &raquo;<a href="https://running.maik-bischoff.de/about-oh-shit-map/" target="foo">100 Meilen</a>&laquo;</p>
@@ -91,6 +99,8 @@
         <div id="downloadbar-toggle" class="the-toggles only-large">
             <i class="fa-solid fa-download"></i>
         </div>
+
+        <!-- Hilfesidebar, Fragezeichenicon, erklärt die verschiendenen Elemente/Inhalte der Karte -->
         <div id="helpbar" class="the-bars only-large">
             <h1><img src="img/klo.png" width="32" height="32" style="margin-right: 10px; margin-left: 10px;" /> Oh-Shit-Map <img src="img/klo.png" width="32" height="32" style="margin-right: 10px; margin-left: 10px;" /></h1>
             <p class="hsub">proudly presented by:<br />Schrotties Laufblog  &raquo;<a href="https://running.maik-bischoff.de/about-oh-shit-map/" target="foo">100 Meilen</a>&laquo;</p>
@@ -118,6 +128,8 @@
         <div id="helpbar-toggle" class="the-toggles only-large">
             <i class="fa-solid fa-question"></i>
         </div>
+
+        <!-- Infosidebar, Kaffeetassenicon, Impressum, Cookies und Spendenlinks  -->
         <div id="infobar" class="the-bars only-large">
             <h1><img src="img/klo.png" width="32" height="32" style="margin-right: 10px; margin-left: 10px;" /> Oh-Shit-Map <img src="img/klo.png" width="32" height="32" style="margin-right: 10px; margin-left: 10px;" /></h1>
             <p class="hsub">proudly presented by:<br />Schrotties Laufblog  &raquo;<a href="https://running.maik-bischoff.de/about-oh-shit-map/" target="foo">100 Meilen</a>&laquo;</p>
@@ -144,6 +156,8 @@
         <div id="infobar-toggle" class="the-toggles only-large">
             <i class="fa-solid fa-mug-hot"></i>
         </div>
+
+        <!-- Finally: The map! -->
         <div id="map" >/div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
@@ -153,6 +167,7 @@
     <script src="js/layer.js"></script>
     <script src="js/toilets.js"></script>
     <script src="js/water.js"></script>
+    <script src="js/cemetery.js"></script>
     <script src="js/geolocation.js"></script>
     <script src="js/map.js"></script>
     <script src="js/sidebar.js"></script>

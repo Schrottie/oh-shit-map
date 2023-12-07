@@ -81,19 +81,19 @@ z-index: 1;
 }
 
 #layerbar-toggle {
-  top: 50px;
+  top: 45px;
 }
 
 #downloadbar-toggle {
-  top: 90px;
+  top: 80px;
 }
 
 #helpbar-toggle {
-  top: 130px;
+  top: 115px;
 }
 
 #infobar-toggle {
-  top: 170px;
+  top: 150px;
 }
 
 #sidebar-toggle.show, #layerbar-toggle.show, #downloadbar-toggle.show, #helpbar-toggle.show, #infobar-toggle.show {

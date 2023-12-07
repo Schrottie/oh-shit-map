@@ -20,6 +20,14 @@ if (document.getElementById('trinkwasserCheckbox').checked) {
     loadTrinkwasserLayer(map, trinkwasserLayer);
 }
 
+// Erstelle eine Leaflet-LayerGroup für Friedhöfe und füge sie zur Karte hinzu
+var friedhofLayer = L.layerGroup().addTo(map);
+
+// Lade Friedhof-Daten und füge sie zur Friedhof-LayerGroup hinzu, wenn die Checkbox aktiviert ist
+if (document.getElementById('friedhofCheckbox').checked) {
+    loadFriedhofLayer(map, friedhofLayer);
+}
+
 // Füge einen Event-Listener für das 'moveend'-Event hinzu, um Layer-Daten beim Kartenbewegen nachzuladen
 map.on('moveend', function () {
     // Prüfe den Zustand der Checkboxen und lade den entsprechenden Layer
@@ -29,6 +37,10 @@ map.on('moveend', function () {
 
     if (document.getElementById('trinkwasserCheckbox').checked) {
         loadTrinkwasserLayer(map, trinkwasserLayer);
+    }
+
+    if (document.getElementById('friedhofCheckbox').checked) {
+        loadFriedhofLayer(map, trinkwasserLayer);
     }
 });
 

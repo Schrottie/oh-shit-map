@@ -33,6 +33,7 @@ function addCheckbox(labelText, checkboxId, isChecked, descriptionText) {
 // Füge Checkboxen für Toiletten und Trinkwasserstellen hinzu
 addCheckbox("Toiletten", "toilettenCheckbox", true, "Dieser Layer zeigt alle in Openstreetmap verzeichneten Toiletten im aktuell angezeigten Kartenausschnitt. (Standard)"); 
 addCheckbox("Trinkwasserstellen", "trinkwasserCheckbox", false, "Dieser Layer zeigt in Openstreetmap eingetragene Trinkwasserstellen des aktuellen Kartenausschnittes. Die sind ja für Läufer oft auch ganz interessant, manch einer bekommt schließlich zuweilen Durst und hat nichts zu trinken dabei. 😉");
+addCheckbox("Sportplätze", "sportplatzCheckbox", false, "Nicht jeder kennt jeden Sportplatz. Da kann natürlich Abhilfe geschafen werden. Und zwar mit diesem Layer. Er zeigt alls Sportplätze, die also Laufbahn für die Sportart Laufen deklariert sind. Damit fallen sicher etliche unter den Tisch, aber ohne diese Eingrenzung kommen zuviele Sportplätze, auf denen laufen nicht möglich ist.");
 addCheckbox("Friedhöfe", "friedhofCheckbox", false, "Friedhöfe? Hier auf einer Karte für Läufer? 😦 Ja, und zwar aus ganz einfachem Grund: Auf Friedhöfen findet man häufig Wasserhähne aus denen Trinkwasser kommt. Und wenn man mal auf besonders langem Lauf ist, besonders Ultraläufer sind da ja durchaus auch mal Überland unterwegs, dann kann hier im Notfall das Wasser aufgefüllt werden. Radfahrer machen das übrigens auch so.");
 
 // Füge einen Event-Listener zur Checkbox für Toiletten hinzu
@@ -63,6 +64,21 @@ document.getElementById('trinkwasserCheckbox').addEventListener('change', functi
 document.getElementById('trinkwasserCheckbox').addEventListener('change', function () {
     // Lade den Trinkwasserlayer basierend auf dem aktuellen Zustand der Checkbox
     loadTrinkwasserLayer(map, trinkwasserLayer, this.checked);
+});
+
+// Füge einen Event-Listener zur Checkbox für Sportplätze hinzu
+document.getElementById('sportplatzCheckbox').addEventListener('change', function () {
+    if (this.checked) {
+        sportplatzLayer.addTo(map);
+    } else {
+        map.removeLayer(sportplatzLayer);
+    }
+});
+
+// Füge einen Event-Listener für das 'change'-Event der Sportplatz-Checkbox hinzu
+document.getElementById('sportplatzCheckbox').addEventListener('change', function () {
+    // Lade den Sportplatzlayer basierend auf dem aktuellen Zustand der Checkbox
+    loadSportplatzLayer(map, sportplatzLayer, this.checked);
 });
 
 // Füge einen Event-Listener zur Checkbox für Friedhöfe hinzu

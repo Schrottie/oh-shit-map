@@ -20,6 +20,14 @@ if (document.getElementById('trinkwasserCheckbox').checked) {
     loadTrinkwasserLayer(map, trinkwasserLayer);
 }
 
+// Erstelle eine Leaflet-LayerGroup für Sportplätze und füge sie zur Karte hinzu
+var sportplatzLayer = L.layerGroup().addTo(map);
+
+// Lade Friedhof-Daten und füge sie zur Friedhof-LayerGroup hinzu, wenn die Checkbox aktiviert ist
+if (document.getElementById('friedhofCheckbox').checked) {
+    loadSportplatzLayer(map, sportplatzLayer);
+}
+
 // Erstelle eine Leaflet-LayerGroup für Friedhöfe und füge sie zur Karte hinzu
 var friedhofLayer = L.layerGroup().addTo(map);
 
@@ -39,8 +47,12 @@ map.on('moveend', function () {
         loadTrinkwasserLayer(map, trinkwasserLayer);
     }
 
+    if (document.getElementById('sportplatzCheckbox').checked) {
+        loadSportplatzLayer(map, sportplatzLayer);
+    }
+
     if (document.getElementById('friedhofCheckbox').checked) {
-        loadFriedhofLayer(map, trinkwasserLayer);
+        loadFriedhofLayer(map, friedhofLayer);
     }
 });
 

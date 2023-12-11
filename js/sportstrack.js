@@ -33,6 +33,12 @@ function loadSportplatzLayer(map, sportplatzLayer) {
                     if (firstCoord.lat && firstCoord.lon) {
                         latlng = [firstCoord.lat, firstCoord.lon];
                     }
+                }else if (sportstrack.type === 'relation' && sportstrack.geometry && sportstrack.geometry.length > 0) {
+                    // Extrahiere nur das erste Koordinatenpaar aus der Geometrie
+                    const firstCoord = sportstrack.geometry[0];
+                    if (firstCoord.lat && firstCoord.lon) {
+                        latlng = [firstCoord.lat, firstCoord.lon];
+                    }
                 }
 
                 // Wähle das passende Icon für die Sportplätze basierend auf den Tags
@@ -84,6 +90,12 @@ function formatTags(tags) {
 // Funktion zum Erstellen einer Overpass-Abfrage basierend auf den Kartenbegrenzungen
 function buildSportstrackQuery(bounds) {
     return `[out:json][timeout:25];
+        (
+        nwr["sport"="running"](${bounds.getSouthWest().lat},${bounds.getSouthWest().lng},${bounds.getNorthEast().lat},${bounds.getNorthEast().lng});
         nwr["leisure"="track"]["sport"="running"](${bounds.getSouthWest().lat},${bounds.getSouthWest().lng},${bounds.getNorthEast().lat},${bounds.getNorthEast().lng});
+        nwr["leisure"="track"]["sport"="athletics"](${bounds.getSouthWest().lat},${bounds.getSouthWest().lng},${bounds.getNorthEast().lat},${bounds.getNorthEast().lng});
+        nwr["athletics"="yes"](${bounds.getSouthWest().lat},${bounds.getSouthWest().lng},${bounds.getNorthEast().lat},${bounds.getNorthEast().lng});
+        );
         out geom;`;
 }
+

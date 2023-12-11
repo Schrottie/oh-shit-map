@@ -1,4 +1,4 @@
-000 +--- Hidden Toggles
+000 +--- Hidden Toggles (.only-large)
 001 +--- Map
 002 +--- Map Title (.only-small)
 003 
@@ -10,8 +10,8 @@
 009 
 010 
 ... 
-024 +--- Sidebars
-025 +--- Toggles
+024 +--- Sidebars (.only-large)
+025 +--- Toggles (.only-large)
 ... 
 ... 
 999 

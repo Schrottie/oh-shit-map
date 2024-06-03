@@ -3,7 +3,7 @@ function loadToilettenLayer(map, toilettenLayer) {
     // Ermittle die Begrenzungen der aktuellen Kartenansicht
     var bounds = map.getBounds();
     // Baue eine Overpass-Abfrage basierend auf den Kartenbegrenzungen
-    var overpassQuery = buildOverpassQuery(bounds);
+    var overpassQuery = buildToiletQuery(bounds);
 
     // Führe einen POST-Request zur Overpass-API durch, um Toiletten-Daten abzurufen
     fetch('https://overpass-api.de/api/interpreter', {
@@ -30,12 +30,7 @@ function loadToilettenLayer(map, toilettenLayer) {
                     const firstCoord = toilet.geometry[0];
                     latlng = [firstCoord.lat, firstCoord.lon];
                 }
-// BEGIN DEBUG
-//                if (latlng.some(coord => coord === undefined)) {
-//                    console.error('Invalid LatLng Data:', toilet); // Überprüfe, ob es Toiletten mit ungültigen Koordinaten gibt
-//                    return; // Springe zum nächsten Durchlauf der Schleife, um den Fehler zu vermeiden
-//                }
-// END DEBUG
+                
                 // Wähle das passende Icon für die Toilette basierend auf den Tags
                 let iconUrl = 'img/klo.png';
 
@@ -52,6 +47,44 @@ function loadToilettenLayer(map, toilettenLayer) {
                     // Erstelle einen Marker mit "verbotenem" Icon und Popup-Inhalt
                     const forbiddenIcon = L.icon({
                         iconUrl: 'img/no-klo.png',
+                        iconSize: [32, 32],
+                        iconAnchor: [16, 32],
+                        popupAnchor: [0, -32],
+                    });
+
+                    const popupContent = `
+                        <span class="popup-title">${toilet.tags.name || 'Öffentliche Toilette'}</span><br />
+                        <span class="popup-desc">Tags</span><br />${formatTags(toilet.tags)}<br />
+                        <span class="popup-desc">Koordinaten</span><br /> <span class="popup-coord">${latlng.join(', ')}</span> (lat/lon)
+                    `;
+
+                    const marker = L.marker(latlng, { icon: forbiddenIcon })
+                        .bindPopup(popupContent);
+
+                    toilettenLayer.addLayer(marker);
+                } else if (toilet.tags.access && toilet.tags.access.toLowerCase() === 'customers' && toilet.tags['toilets:position'] === 'urinal') {
+                    // Erstelle einen Marker mit Kundenurinal-Icon und Popup-Inhalt
+                    const forbiddenIcon = L.icon({
+                        iconUrl: 'img/kundenpipi.png',
+                        iconSize: [32, 32],
+                        iconAnchor: [16, 32],
+                        popupAnchor: [0, -32],
+                    });
+
+                    const popupContent = `
+                        <span class="popup-title">${toilet.tags.name || 'Öffentliche Toilette'}</span><br />
+                        <span class="popup-desc">Tags</span><br />${formatTags(toilet.tags)}<br />
+                        <span class="popup-desc">Koordinaten</span><br /> <span class="popup-coord">${latlng.join(', ')}</span> (lat/lon)
+                    `;
+
+                    const marker = L.marker(latlng, { icon: forbiddenIcon })
+                        .bindPopup(popupContent);
+
+                    toilettenLayer.addLayer(marker);
+                } else if (toilet.tags.access && toilet.tags.access.toLowerCase() === 'customers') {
+                    // Erstelle einen Marker mit Kundenklo-Icon und Popup-Inhalt
+                    const forbiddenIcon = L.icon({
+                        iconUrl: 'img/kundenklo.png',
                         iconSize: [32, 32],
                         iconAnchor: [16, 32],
                         popupAnchor: [0, -32],
@@ -93,7 +126,6 @@ function loadToilettenLayer(map, toilettenLayer) {
 }
 
 
-
 // Funktion zum Formatieren von Tags für die Anzeige im Popup
 function formatTags(tags) {
     const formattedTags = Object.entries(tags).map(([key, value]) => {
@@ -109,7 +141,7 @@ function formatTags(tags) {
 }
 
 // Funktion zum Erstellen einer Overpass-Abfrage basierend auf den Kartenbegrenzungen
-function buildOverpassQuery(bounds) {
+function buildToiletQuery(bounds) {
     return `[out:json][timeout:25];
         nwr["amenity"~"toilets"](${bounds.getSouthWest().lat},${bounds.getSouthWest().lng},${bounds.getNorthEast().lat},${bounds.getNorthEast().lng});
         out geom;`;

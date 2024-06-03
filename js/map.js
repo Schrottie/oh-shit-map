@@ -9,12 +9,51 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 // Erstelle eine Leaflet-LayerGroup für Toiletten und füge sie zur Karte hinzu
 var toilettenLayer = L.layerGroup().addTo(map);
 
-// Lade Toiletten-Daten und füge sie zur Toiletten-LayerGroup hinzu
+// Lade Toiletten-Daten und füge sie zur Toiletten-LayerGroup hinzu, wenn die Checkbox aktiviert ist
 loadToilettenLayer(map, toilettenLayer);
 
-// Füge einen Event-Listener für das 'moveend'-Event hinzu, um Toiletten-Daten beim Kartenbewegen nachzuladen
+// Erstelle eine Leaflet-LayerGroup für Trinkwasserstellen und füge sie zur Karte hinzu
+var trinkwasserLayer = L.layerGroup().addTo(map);
+
+// Lade Trinkwasserstellen-Daten und füge sie zur Trinkwasser-LayerGroup hinzu, wenn die Checkbox aktiviert ist
+if (document.getElementById('trinkwasserCheckbox').checked) {
+    loadTrinkwasserLayer(map, trinkwasserLayer);
+}
+
+// Erstelle eine Leaflet-LayerGroup für Sportplätze und füge sie zur Karte hinzu
+var sportplatzLayer = L.layerGroup().addTo(map);
+
+// Lade Friedhof-Daten und füge sie zur Friedhof-LayerGroup hinzu, wenn die Checkbox aktiviert ist
+if (document.getElementById('friedhofCheckbox').checked) {
+    loadSportplatzLayer(map, sportplatzLayer);
+}
+
+// Erstelle eine Leaflet-LayerGroup für Friedhöfe und füge sie zur Karte hinzu
+var friedhofLayer = L.layerGroup().addTo(map);
+
+// Lade Friedhof-Daten und füge sie zur Friedhof-LayerGroup hinzu, wenn die Checkbox aktiviert ist
+if (document.getElementById('friedhofCheckbox').checked) {
+    loadFriedhofLayer(map, friedhofLayer);
+}
+
+// Füge einen Event-Listener für das 'moveend'-Event hinzu, um Layer-Daten beim Kartenbewegen nachzuladen
 map.on('moveend', function () {
-    loadToilettenLayer(map, toilettenLayer);
+    // Prüfe den Zustand der Checkboxen und lade den entsprechenden Layer
+    if (document.getElementById('toilettenCheckbox').checked) {
+        loadToilettenLayer(map, toilettenLayer);
+    }
+
+    if (document.getElementById('trinkwasserCheckbox').checked) {
+        loadTrinkwasserLayer(map, trinkwasserLayer);
+    }
+
+    if (document.getElementById('sportplatzCheckbox').checked) {
+        loadSportplatzLayer(map, sportplatzLayer);
+    }
+
+    if (document.getElementById('friedhofCheckbox').checked) {
+        loadFriedhofLayer(map, friedhofLayer);
+    }
 });
 
 // Zentriere die Karte auf den Standort des Benutzers, wenn möglich

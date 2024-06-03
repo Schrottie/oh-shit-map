@@ -3,6 +3,8 @@ document.addEventListener('DOMContentLoaded', function () {
     // Finde DOM-Elemente für die Sidebar, Downloadbar und Helpbar
     var sidebar = document.getElementById('sidebar');
     var sidebarToggle = document.getElementById('sidebar-toggle');
+    var layerbar = document.getElementById('layerbar');
+    var layerbarToggle = document.getElementById('layerbar-toggle');
     var downloadbar = document.getElementById('downloadbar');
     var downloadbarToggle = document.getElementById('downloadbar-toggle');
     var helpbar = document.getElementById('helpbar');
@@ -14,8 +16,21 @@ document.addEventListener('DOMContentLoaded', function () {
     sidebarToggle.addEventListener('click', function () {
         // Toggle-Klassen, um die Sichtbarkeit der Sidebar zu ändern
         sidebar.classList.toggle('show');
-        sidebarToggle.classList.toggle('show');
         // Ändere die Sichtbarkeit der Toggle-Buttons
+        sidebarToggle.classList.toggle('show');
+        layerbarToggle.classList.toggle('hidden');
+        downloadbarToggle.classList.toggle('hidden');
+        helpbarToggle.classList.toggle('hidden');
+        infobarToggle.classList.toggle('hidden');
+    });
+
+    // Füge einen Event-Listener für das Klicken auf den Layerbar-Button hinzu
+    layerbarToggle.addEventListener('click', function () {
+        // Toggle-Klassen, um die Sichtbarkeit der Layerbar zu ändern
+        layerbar.classList.toggle('show');
+        // Ändere die Sichtbarkeit der Toggle-Buttons
+        sidebarToggle.classList.toggle('hidden');
+        layerbarToggle.classList.toggle('show');
         downloadbarToggle.classList.toggle('hidden');
         helpbarToggle.classList.toggle('hidden');
         infobarToggle.classList.toggle('hidden');
@@ -27,6 +42,7 @@ document.addEventListener('DOMContentLoaded', function () {
         downloadbar.classList.toggle('show');
         // Ändere die Sichtbarkeit der Toggle-Buttons
         sidebarToggle.classList.toggle('hidden');
+        layerbarToggle.classList.toggle('hidden');
         downloadbarToggle.classList.toggle('show');
         helpbarToggle.classList.toggle('hidden');
         infobarToggle.classList.toggle('hidden');
@@ -38,6 +54,7 @@ document.addEventListener('DOMContentLoaded', function () {
         helpbar.classList.toggle('show');
         // Ändere die Sichtbarkeit der Toggle-Buttons
         sidebarToggle.classList.toggle('hidden');
+        layerbarToggle.classList.toggle('hidden');
         downloadbarToggle.classList.toggle('hidden');
         helpbarToggle.classList.toggle('show');
         infobarToggle.classList.toggle('hidden');
@@ -49,6 +66,7 @@ document.addEventListener('DOMContentLoaded', function () {
         infobar.classList.toggle('show');
         // Ändere die Sichtbarkeit der Toggle-Buttons
         sidebarToggle.classList.toggle('hidden');
+        layerbarToggle.classList.toggle('hidden');
         downloadbarToggle.classList.toggle('hidden');
         helpbarToggle.classList.toggle('hidden');
         infobarToggle.classList.toggle('show');
